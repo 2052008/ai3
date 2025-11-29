@@ -77,7 +77,7 @@ CONTENT_BY_LABEL: dict[str, dict[str, list[str]]] = {
     labels[0] : {"texts" : ["내세적 종교관과 신권 정치가 반영된 이집트의 유적지"], "images" : ["https://www.textbooktravel.com/wp-content/uploads/2021/01/Great-Sphinx-including-pyramids-of-Menkaure-and-Khafre-in-the-background.jpg"]},
     labels[1] : {"texts" : ["아크로폴리스와 아고라로 대표되는 폴리스의 특징이 드러나는 그리스의 유적"], "images" : ["https://i.namu.wiki/i/2jPHcA_NhDqMMW2IX0U9JzL_ziL-UZoc7bGIY012Q76o6edD6rCwYcxtydLiZOFgU7RPPVNW4J3P4G3X6MbOtw.webp"]},
     labels[2] : {"texts" : ["국제적인 문화와 페르세폴리스의 아름다움이 돋보이는 페르시아의 유적지"], "images" : ["https://i.namu.wiki/i/-ykwKFt_xkhj4NU9zaz0zikRseaGDr87W1IybOESUBmY_UK1hPTeqtJu2SCucs0at4uRwSHOnn2ifaUNjI66FA.webp"]},
-    
+}
 
 # ======================
 # 유틸
