@@ -1,4 +1,5 @@
-# streamlit_py
+# streamlit_app.py
+
 import os, re
 from io import BytesIO
 import numpy as np
@@ -43,9 +44,9 @@ if "last_prediction" not in st.session_state:
     st.session_state.last_prediction = None
 
 # ======================
-# 모델 로드
+# 모델
 # ======================
-FILE_ID = st.secrets.get("GDRIVE_FILE_ID", "1aUR7d3u4NRunSXZLS7m3MtIvS8uqS52_")
+FILE_ID = st.secrets.get("GDRIVE_FILE_ID", "")
 MODEL_PATH = st.secrets.get("MODEL_PATH", "model.pkl")
 
 @st.cache_resource
@@ -68,15 +69,22 @@ st.markdown("---")
 # 각 라벨당 최대 3개씩 표시됩니다.
 # ======================
 CONTENT_BY_LABEL: dict[str, dict[str, list[str]]] = {
-    # 예)
-    # "짬뽕": {
-    #   "texts": ["짬뽕의 특징과 유래", "국물 맛 포인트", "지역별 스타일 차이"],
-    #   "images": ["https://.../jjampong1.jpg", "https://.../jjampong2.jpg"],
-    #   "videos": ["https://youtu.be/XXXXXXXXXXX"]
-    # },
-    labels[0] : {"texts" : ["내세적 종교관과 신권 정치가 반영된 이집트의 유적지"], "images" : ["https://www.textbooktravel.com/wp-content/uploads/2021/01/Great-Sphinx-including-pyramids-of-Menkaure-and-Khafre-in-the-background.jpg"]},
-    labels[1] : {"texts" : ["아크로폴리스와 아고라로 대표되는 폴리스의 특징이 드러나는 그리스의 유적"], "images" : ["https://i.namu.wiki/i/2jPHcA_NhDqMMW2IX0U9JzL_ziL-UZoc7bGIY012Q76o6edD6rCwYcxtydLiZOFgU7RPPVNW4J3P4G3X6MbOtw.webp"]},
-    labels[2] : {"texts" : ["국제적인 문화와 페르세폴리스의 아름다움이 돋보이는 페르시아의 유적지"], "images" : ["https://i.namu.wiki/i/-ykwKFt_xkhj4NU9zaz0zikRseaGDr87W1IybOESUBmY_UK1hPTeqtJu2SCucs0at4uRwSHOnn2ifaUNjI66FA.webp"]},
+
+     labels[0]: {
+       "texts": ["내세적 종교관과 신권 정치가 반영된 이집트의 유적지"],
+       "images": ["https://www.textbooktravel.com/wp-content/uploads/2021/01/Great-Sphinx-including-pyramids-of-Menkaure-and-Khafre-in-the-background.jpg"],
+       "videos": ["https://www.youtube.com/watch?v=hO1tzmi1V5g"]
+     },
+     labels[1]: {
+       "texts": ["아크로폴리스와 아고라로 대표되는 폴리스의 특징이 드러나는 그리스의 유적"],
+       "images": ["https://i0.wp.com/www.exoticca.com/wp-content/uploads/2021/05/Athens-BLOG-Europe.png?w=1300&ssl=1"],
+       "videos": ["https://www.youtube.com/watch?v=6bDrYTXQLu8"]
+     },
+     labels[2]: {
+       "texts": ["국제적인 문화와 페르세폴리스의 아름다움이 돋보이는 페르시아의 유적지"],
+       "images": ["https://res.cloudinary.com/tourhq/image/upload/c_fill,f_auto,fl_progressive,g_auto,h_900,q_auto:best,w_1800/gh5cm8dl6rknifzhb4sh"],
+       "videos": ["https://www.youtube.com/watch?v=EUeZOFWvuEM"]
+     },
 }
 
 # ======================
